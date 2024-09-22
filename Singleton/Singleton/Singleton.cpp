@@ -5,7 +5,7 @@
 
 using namespace std; 
 
-// клас для сховища
+// РєР»Р°СЃ РґР»СЏ СЃС…РѕРІРёС‰Р°
 class Storage {
 public:
     virtual void connect() = 0;
@@ -13,7 +13,7 @@ public:
     virtual ~Storage() {}
 };
 
-// локальний диск
+// Р»РѕРєР°Р»СЊРЅРёР№ РґРёСЃРє
 class LocalDisk : public Storage {
 public:
     void connect() override {
@@ -24,7 +24,7 @@ public:
     }
 };
 
-// амазон
+// Р°РјР°Р·РѕРЅ
 class AmazonS3 : public Storage {
 public:
     void connect() override {
@@ -48,11 +48,11 @@ public:
 };
 
 
-// клас користувача
+// РєР»Р°СЃ РєРѕСЂРёСЃС‚СѓРІР°С‡Р°
 class User {
 private:
     string name;
-    shared_ptr<Storage> storage; // вибране сховище користувача
+    shared_ptr<Storage> storage; // РІРёР±СЂР°РЅРµ СЃС…РѕРІРёС‰Рµ
 
 public:
     User(const string& name) : name(name) {}
@@ -72,11 +72,11 @@ public:
     }
 };
 
-// Клас-Одинак для управління сховищем файлів
+// РљР»Р°СЃ-РћРґРёРЅР°Рє РґР»СЏ СѓРїСЂР°РІР»С–РЅРЅСЏ СЃС…РѕРІРёС‰РµРј С„Р°Р№Р»С–РІ
 class FileManager {
 private:
-    static FileManager* instance; // статична змінна для зберігання єдиного екземпляра
-    vector<shared_ptr<Storage>> storages; // список сховищ
+    static FileManager* instance; // СЃС‚Р°С‚РёС‡РЅР° Р·РјС–РЅРЅР° РґР»СЏ Р·Р±РµСЂС–РіР°РЅРЅСЏ С”РґРёРЅРѕРіРѕ РµРєР·РµРјРїР»СЏСЂР°
+    vector<shared_ptr<Storage>> storages; // СЃРїРёСЃРѕРє СЃС…РѕРІРёС‰
 
     
     FileManager() {
@@ -87,7 +87,7 @@ private:
     }
 
 public:
-    // отримання єдиного екземпляра класу
+    // РѕС‚СЂРёРјР°РЅРЅСЏ С”РґРёРЅРѕРіРѕ РµРєР·РµРјРїР»СЏСЂР° РєР»Р°СЃСѓ
     static FileManager* getInstance() {
         if (!instance) {
             instance = new FileManager();
@@ -95,22 +95,22 @@ public:
         return instance;
     }
 
-    // отримання доступних сховищ
+    // РѕС‚СЂРёРјР°РЅРЅСЏ РґРѕСЃС‚СѓРїРЅРёС… СЃС…РѕРІРёС‰
     const vector<shared_ptr<Storage>>& getAvailableStorages() const {
         return storages;
     }
 
-    // додавання нового сховища
+    // + СЃС…РѕРІРёС‰Рµ
     void addStorage(shared_ptr<Storage> newStorage) {
         storages.push_back(newStorage);
     }
 };
 
-// Ініціалізація статичного члена класу
+// С–РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ 
 FileManager* FileManager::instance = nullptr;
 
 int main() {
-    // Отримання екземпляра FileManager
+    // РћС‚СЂРёРјР°РЅРЅСЏ РµРєР·РµРјРїР»СЏСЂР° FileManager
     FileManager* fileManager = FileManager::getInstance();
 
     shared_ptr<Storage> googleDrive = make_shared<GoogleDrive>();
@@ -126,7 +126,7 @@ int main() {
         cout << i << ": " << typeid(*storages[i]).name() << endl;
     }
 
-    // cтворення користувача
+    // cГІГўГ®Г°ГҐГ­Г­Гї ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Г 
     User user1("John");
 
     user1.setStorage(fileManager->getAvailableStorages()[1]); // LocalDisk - 0; Amazon - 1; Google - 2;
