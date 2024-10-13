@@ -1,0 +1,16 @@
+﻿  Adapter.cpp
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(88,5): error C2065: 'Notification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(88,19): error C2065: 'emailNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(89,5): error C2065: 'emailNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(93,5): error C2065: 'Notification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(93,19): error C2065: 'slackNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(94,5): error C2065: 'slackNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(98,5): error C2065: 'Notification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(98,19): error C2065: 'smsNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(99,5): error C2065: 'smsNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(102,12): error C2065: 'emailNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(102,5): error C2541: 'delete': cannot delete objects that are not pointers
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(103,12): error C2065: 'slackNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(103,5): error C2541: 'delete': cannot delete objects that are not pointers
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(104,12): error C2065: 'smsNotification': undeclared identifier
+D:\UE5\c#\Adapter\Adapter\Adapter.cpp(104,5): error C2541: 'delete': cannot delete objects that are not pointers
