@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <locale>
 using namespace std;
 
 class Entity 
@@ -12,21 +11,21 @@ public:
 
     // Update process
     void updateProcess() 
-{
-        cout << "Îòðèìàííÿ îá'ºêòà äëÿ îíîâëåííÿ...\n";
+    {
+        cout << "Retrieving object for update...\n";
         if (beforeValidate()) 
         {
             string validationStatus = validate();
             if (validationStatus == "OK") 
             {
-                cout << "Âàë³äàö³ÿ ïðîéäåíà.\n";
-                cout << "Ôîðìóâàííÿ çàïèòó íà çáåðåæåííÿ ³íôîðìàö³¿...\n";
+                cout << "Validation passed.\n";
+                cout << "Forming request to save information...\n";
                 cout << update() << endl;
                 cout << respond() << endl;
             }
             else 
             {
-                cout << "Ïîìèëêà âàë³äàö³¿: " << validationStatus << endl;
+                cout << "Validation error: " << validationStatus << endl;
                 onValidationError();
             }
         }
@@ -41,46 +40,55 @@ protected:
 class Product : public Entity 
 {
 public:
-    string validate() override {
+    string validate() override 
+    {
         // Validation settings
         return "OK"; // error if not success
     }
 
-    string update() override {
-        return "Òîâàð îíîâëåíî.";
+    string update() override 
+    {
+        return "Product updated.";
     }
 
-    string respond() override {
-        return "Êîä â³äïîâ³ä³: 200, Ñòàòóñ: Óñï³õ";
+    string respond() override 
+    {
+        return "Response code: 200, Status: Success";
     }
 
 protected:
-    void onValidationError() override {
+    void onValidationError() override 
+    {
         // Sending message
-        cout << "Ñïîâ³ùåííÿ àäì³í³ñòðàòîðó: Ïîìèëêà âàë³äàö³¿ òîâàðó\n";
+        cout << "Administrator notification: Product validation error\n";
     }
 };
 
 class User : public Entity 
 {
 public:
-    string validate() override {
-        // Error if mail was changed
-        if (emailChanged) {
-            return "Error: Çàáîðîíåíî çì³íþâàòè email";
+    string validate() override 
+    {
+        // Error if email was changed
+        if (emailChanged) 
+        {
+            return "Error: Changing email is not allowed";
         }
         return "OK";
     }
 
-    string update() override {
-        return "Êîðèñòóâà÷ îíîâëåíî.";
+    string update() override 
+    {
+        return "User updated.";
     }
 
-    string respond() override {
-        return "Êîä â³äïîâ³ä³: 200, Ñòàòóñ: Óñï³õ";
+    string respond() override 
+    {
+        return "Response code: 200, Status: Success";
     }
 
-    void setEmailChanged(bool changed) {
+    void setEmailChanged(bool changed) 
+    {
         emailChanged = changed;
     }
 
@@ -91,16 +99,19 @@ private:
 class Order : public Entity 
 {
 public:
-    string validate() override {
+    string validate() override 
+    {
         return "OK";
     }
 
-    string update() override {
-        return "Çàìîâëåííÿ îíîâëåíî.";
+    string update() override 
+    {
+        return "Order updated.";
     }
 
-    string respond() override {
-        return "Êîä â³äïîâ³ä³: 200, Ñòàòóñ: Óñï³õ, Äàí³: {\"OrderId\": 123, \"Status\": \"Updated\"}";
+    string respond() override 
+    {
+        return "Response code: 200, Status: Success, Data: {\"OrderId\": 123, \"Status\": \"Updated\"}";
     }
 };
 
@@ -108,23 +119,21 @@ public:
 int main() 
 {
 
-    // ua text in console
-    setlocale(LC_ALL, "");
-
     Product product;
-    cout << "Îíîâëåííÿ Òîâàðó:\n";
+    cout << "Updating Product:\n";
     product.updateProcess();
     cout << endl;
 
     User user;
-    cout << "Îíîâëåííÿ Êîðèñòóâà÷à:\n";
-    user.setEmailChanged(true); // trying to change mail
+    cout << "Updating User:\n";
+    user.setEmailChanged(true); // trying to change email
     user.updateProcess();
     cout << endl;
 
     Order order;
-    cout << "Îíîâëåííÿ Çàìîâëåííÿ:\n";
+    cout << "Updating Order:\n";
     order.updateProcess();
 
     return 0;
 }
+
