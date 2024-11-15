@@ -3,25 +3,30 @@
 #include <locale>
 using namespace std;
 
-class Entity {
+class Entity 
+{
 public:
     virtual string validate() = 0;
     virtual string update() = 0;
     virtual string respond() = 0;
 
     // Update process
-    void updateProcess() {
-        cout << "Îòðèìàííÿ îá'ºêòà äëÿ îíîâëåííÿ...\n";
-        if (beforeValidate()) {
+    void updateProcess() 
+{
+        cout << "ÃŽÃ²Ã°Ã¨Ã¬Ã Ã­Ã­Ã¿ Ã®Ã¡'ÂºÃªÃ²Ã  Ã¤Ã«Ã¿ Ã®Ã­Ã®Ã¢Ã«Ã¥Ã­Ã­Ã¿...\n";
+        if (beforeValidate()) 
+        {
             string validationStatus = validate();
-            if (validationStatus == "OK") {
-                cout << "Âàë³äàö³ÿ ïðîéäåíà.\n";
-                cout << "Ôîðìóâàííÿ çàïèòó íà çáåðåæåííÿ ³íôîðìàö³¿...\n";
+            if (validationStatus == "OK") 
+            {
+                cout << "Ã‚Ã Ã«Â³Ã¤Ã Ã¶Â³Ã¿ Ã¯Ã°Ã®Ã©Ã¤Ã¥Ã­Ã .\n";
+                cout << "Ã”Ã®Ã°Ã¬Ã³Ã¢Ã Ã­Ã­Ã¿ Ã§Ã Ã¯Ã¨Ã²Ã³ Ã­Ã  Ã§Ã¡Ã¥Ã°Ã¥Ã¦Ã¥Ã­Ã­Ã¿ Â³Ã­Ã´Ã®Ã°Ã¬Ã Ã¶Â³Â¿...\n";
                 cout << update() << endl;
                 cout << respond() << endl;
             }
-            else {
-                cout << "Ïîìèëêà âàë³äàö³¿: " << validationStatus << endl;
+            else 
+            {
+                cout << "ÃÃ®Ã¬Ã¨Ã«ÃªÃ  Ã¢Ã Ã«Â³Ã¤Ã Ã¶Â³Â¿: " << validationStatus << endl;
                 onValidationError();
             }
         }
@@ -33,7 +38,8 @@ protected:
     virtual void onValidationError() {}
 };
 
-class Product : public Entity {
+class Product : public Entity 
+{
 public:
     string validate() override {
         // Validation settings
@@ -41,36 +47,37 @@ public:
     }
 
     string update() override {
-        return "Òîâàð îíîâëåíî.";
+        return "Ã’Ã®Ã¢Ã Ã° Ã®Ã­Ã®Ã¢Ã«Ã¥Ã­Ã®.";
     }
 
     string respond() override {
-        return "Êîä â³äïîâ³ä³: 200, Ñòàòóñ: Óñï³õ";
+        return "ÃŠÃ®Ã¤ Ã¢Â³Ã¤Ã¯Ã®Ã¢Â³Ã¤Â³: 200, Ã‘Ã²Ã Ã²Ã³Ã±: Ã“Ã±Ã¯Â³Ãµ";
     }
 
 protected:
     void onValidationError() override {
         // Sending message
-        cout << "Ñïîâ³ùåííÿ àäì³í³ñòðàòîðó: Ïîìèëêà âàë³äàö³¿ òîâàðó\n";
+        cout << "Ã‘Ã¯Ã®Ã¢Â³Ã¹Ã¥Ã­Ã­Ã¿ Ã Ã¤Ã¬Â³Ã­Â³Ã±Ã²Ã°Ã Ã²Ã®Ã°Ã³: ÃÃ®Ã¬Ã¨Ã«ÃªÃ  Ã¢Ã Ã«Â³Ã¤Ã Ã¶Â³Â¿ Ã²Ã®Ã¢Ã Ã°Ã³\n";
     }
 };
 
-class User : public Entity {
+class User : public Entity 
+{
 public:
     string validate() override {
         // Error if mail was changed
         if (emailChanged) {
-            return "Error: Çàáîðîíåíî çì³íþâàòè email";
+            return "Error: Ã‡Ã Ã¡Ã®Ã°Ã®Ã­Ã¥Ã­Ã® Ã§Ã¬Â³Ã­Ã¾Ã¢Ã Ã²Ã¨ email";
         }
         return "OK";
     }
 
     string update() override {
-        return "Êîðèñòóâà÷ îíîâëåíî.";
+        return "ÃŠÃ®Ã°Ã¨Ã±Ã²Ã³Ã¢Ã Ã· Ã®Ã­Ã®Ã¢Ã«Ã¥Ã­Ã®.";
     }
 
     string respond() override {
-        return "Êîä â³äïîâ³ä³: 200, Ñòàòóñ: Óñï³õ";
+        return "ÃŠÃ®Ã¤ Ã¢Â³Ã¤Ã¯Ã®Ã¢Â³Ã¤Â³: 200, Ã‘Ã²Ã Ã²Ã³Ã±: Ã“Ã±Ã¯Â³Ãµ";
     }
 
     void setEmailChanged(bool changed) {
@@ -81,40 +88,42 @@ private:
     bool emailChanged = false;
 };
 
-class Order : public Entity {
+class Order : public Entity 
+{
 public:
     string validate() override {
         return "OK";
     }
 
     string update() override {
-        return "Çàìîâëåííÿ îíîâëåíî.";
+        return "Ã‡Ã Ã¬Ã®Ã¢Ã«Ã¥Ã­Ã­Ã¿ Ã®Ã­Ã®Ã¢Ã«Ã¥Ã­Ã®.";
     }
 
     string respond() override {
-        return "Êîä â³äïîâ³ä³: 200, Ñòàòóñ: Óñï³õ, Äàí³: {\"OrderId\": 123, \"Status\": \"Updated\"}";
+        return "ÃŠÃ®Ã¤ Ã¢Â³Ã¤Ã¯Ã®Ã¢Â³Ã¤Â³: 200, Ã‘Ã²Ã Ã²Ã³Ã±: Ã“Ã±Ã¯Â³Ãµ, Ã„Ã Ã­Â³: {\"OrderId\": 123, \"Status\": \"Updated\"}";
     }
 };
 
 // client code
-int main() {
+int main() 
+{
 
     // ua text in console
     setlocale(LC_ALL, "");
 
     Product product;
-    cout << "Îíîâëåííÿ Òîâàðó:\n";
+    cout << "ÃŽÃ­Ã®Ã¢Ã«Ã¥Ã­Ã­Ã¿ Ã’Ã®Ã¢Ã Ã°Ã³:\n";
     product.updateProcess();
     cout << endl;
 
     User user;
-    cout << "Îíîâëåííÿ Êîðèñòóâà÷à:\n";
+    cout << "ÃŽÃ­Ã®Ã¢Ã«Ã¥Ã­Ã­Ã¿ ÃŠÃ®Ã°Ã¨Ã±Ã²Ã³Ã¢Ã Ã·Ã :\n";
     user.setEmailChanged(true); // trying to change mail
     user.updateProcess();
     cout << endl;
 
     Order order;
-    cout << "Îíîâëåííÿ Çàìîâëåííÿ:\n";
+    cout << "ÃŽÃ­Ã®Ã¢Ã«Ã¥Ã­Ã­Ã¿ Ã‡Ã Ã¬Ã®Ã¢Ã«Ã¥Ã­Ã­Ã¿:\n";
     order.updateProcess();
 
     return 0;
