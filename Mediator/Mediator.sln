@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mediator", "Mediator\Mediator.vcxproj", "{2965198D-B442-45BE-B2B4-F6D928ED55ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2965198D-B442-45BE-B2B4-F6D928ED55ED}.Debug|x64.ActiveCfg = Debug|x64
+		{2965198D-B442-45BE-B2B4-F6D928ED55ED}.Debug|x64.Build.0 = Debug|x64
+		{2965198D-B442-45BE-B2B4-F6D928ED55ED}.Debug|x86.ActiveCfg = Debug|Win32
+		{2965198D-B442-45BE-B2B4-F6D928ED55ED}.Debug|x86.Build.0 = Debug|Win32
+		{2965198D-B442-45BE-B2B4-F6D928ED55ED}.Release|x64.ActiveCfg = Release|x64
+		{2965198D-B442-45BE-B2B4-F6D928ED55ED}.Release|x64.Build.0 = Release|x64
+		{2965198D-B442-45BE-B2B4-F6D928ED55ED}.Release|x86.ActiveCfg = Release|Win32
+		{2965198D-B442-45BE-B2B4-F6D928ED55ED}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19FE5A95-74CB-41F8-90E8-7DEFB004396D}
+	EndGlobalSection
+EndGlobal
